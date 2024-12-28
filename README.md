@@ -4,3 +4,5 @@ This is a simple to follow and easy to implement course that will go slowly thro
 
 In order to follow along please checkout [these instructions](https://sites.google.com/education.nsw.gov.au/year12softwareengineering/learning-flask-and-pwa-series/readme-first).
 
+Enjoy!!
+
