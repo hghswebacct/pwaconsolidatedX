@@ -1,3 +1,2 @@
-# Your first PWA and FLASK course.
-
-This is a simple to follow and easy to implement course that will go slowly through the process of developing a website, converting it to PWA and then using FLASK to convert front end local operations to backend SQLite storing of data.
+## Level 1 - Simple static webpages
+This level is very simple - we are simply creating a couple of static webpages that we will be using in subsequent levels. You can pretty much just copy and paste the files here, and just check that they are working.
