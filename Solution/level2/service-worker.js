@@ -7,32 +7,12 @@ const urlsToCache = [
   "/bigIcon.png",
   "/favicon.ico"
 ];
-
-// Install event - Cache files
+// Note that this is coded to minimise caching. This decreases performance but makes debugging easier
 self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return Promise.all(
-        urlsToCache.map(url => {
-          return fetch(url).then(response => {
-            if (!response.ok) {
-              throw new Error(`Failed to fetch ${url}, Status: ${response.status}`);
-            }
-            return cache.put(url, response);
-          }).catch(err => {
-            console.warn(`Failed to cache ${url}:`, err);
-          });
-        })
-      );
-    }).then(() => {
-      console.log("All resources cached successfully");
-      return self.skipWaiting();
-    }).catch(err => {
-      console.error("Caching failed during install:", err);
-    })
-  );
+  // Immediately activate the service worker without caching anything
+  self.skipWaiting();
+  console.log("Service Worker installed. No caching performed.");
 });
-
 // Activate event - Clean up old caches
 self.addEventListener("activate", event => {
   event.waitUntil(
@@ -47,7 +27,6 @@ self.addEventListener("activate", event => {
     })
   );
 });
-
 // Fetch event - Serve from cache or fallback to network
 self.addEventListener("fetch", event => {
   event.respondWith(
